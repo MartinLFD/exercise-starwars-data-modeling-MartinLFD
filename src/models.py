@@ -15,7 +15,6 @@ class User(Base):
     email = Column(String(100), unique=True, nullable=False)
     favorite_planet = relationship('Favorite_planet')
     favorite_character = relationship('Favorite_character')
-    
 
 class Favorite_planet(Base):
     __tablename__ = 'favorite_planet'
@@ -27,7 +26,7 @@ class Favorite_planet(Base):
 class Planet(Base):
     __tablename__ = 'planet'
     id = Column(Integer, primary_key= True)
-    name = Column(String(100), unique= True)
+    name = Column(String(100), unique= True, nullable=False)
     rotation_period = Column(Integer)
     orbital_period = Column(Integer)
     diameter = Column(Integer)
@@ -49,7 +48,7 @@ class Character(Base):
     __tablename__ = 'character'
     id = Column(Integer, primary_key= True)
     description = Column(String(200))
-    name = Column(String(200 ), unique= True)
+    name = Column(String(200 ), unique= True, nullable=False )
     skin_color = Column(String(20))
     mass = Column(Integer)
     hair_color = Column(String(20))
@@ -58,9 +57,6 @@ class Character(Base):
     planet_id = Column(Integer)
     film_id = Column(Integer)
     favorite_character = relationship('Favorite_character')
-
-
-
 
     def to_dict(self):
         return {}
